@@ -1,3 +1,9 @@
+<?php
+require_once(__DIR__ . '/../auth.php'); 
+checkUserRole('admin'); 
+?>
+
+
 <div class="page-title mb-3">Lista de Cursos</div>
 <div style="width:3%;">
   <a class="nav-link <?= (isset($page)) && $page == 'home' ? 'active' : '' ?>" href="./">

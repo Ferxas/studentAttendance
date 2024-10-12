@@ -11,9 +11,11 @@
                 <li class="nav-item">
                     <a class="nav-link text-white <?= (isset($page)) && $page == 'home' ? 'active' : '' ?>" href="./">Inicio</a>
                 </li>
+                <?php if ($_SESSION['user_role'] === 'admin'): ?>
                 <li class="nav-item">
                     <a class="nav-link text-white <?= (isset($page)) && $page == 'class_list' ? 'active' : '' ?>" href="./?page=class_list">Cursos</a>
                 </li>
+                <?php endif; ?>
                 <li class="nav-item">
                     <a class="nav-link text-white <?= (isset($page)) && $page == 'student_list' ? 'active' : '' ?>" href="./?page=student_list">Estudiantes</a>
                 </li>
@@ -27,16 +29,16 @@
             <!-- Move Logout to the right end -->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="">
+                    <a class="nav-link text-white" href="#">
                         <i class="fa-solid fa-user"></i>
-                        User Name
+                        <?= $_SESSION['user_name'] ?? 'User' ?> - <?= $_SESSION['user_role'] ?? 'Role' ?>
                     </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="./logout.php">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         Logout
                     </a>
-                </li>
                 </li>
             </ul>
         </div>
