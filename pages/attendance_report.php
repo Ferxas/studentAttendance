@@ -8,6 +8,12 @@
 <?php
 // $studentList = $actionClass->list_student();
 $classList = $actionClass->list_class();
+// Filtrar la lista de clases para que los encargados solo vean su curso
+if ($_SESSION['user_role'] === 'encargado') {
+    $classList = array_filter($classList, function($class) {
+        return $class['id'] == $_SESSION['user_course_id'];
+    });
+}
 $class_id = $_GET['class_id'] ?? "";
 $class_month = $_GET['class_month'] ?? "";
 $studentList = $actionClass->attendanceStudentsMonthly($class_id, $class_month);
@@ -17,6 +23,12 @@ if(!empty($class_month)){
 }
 // echo $monthLastDay;
 ?>
+
+
+
+
+
+
 <form action="" id="manage-attendance">
     <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
