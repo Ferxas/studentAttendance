@@ -6,12 +6,20 @@
 </div>
 <hr>
 <?php 
-// $studentList = $actionClass->list_student();
 $classList = $actionClass->list_class();
+$user_role = $_SESSION['user_role'];
+$user_course_id = $_SESSION['user_course_id'] ?? null;
+
 $class_id = $_GET['class_id'] ?? "";
 $class_date = $_GET['class_date'] ?? "";
 $studentList = $actionClass->attendanceStudents($class_id, $class_date);
 
+// Filtrar la lista de clases para que los encargados solo vean su curso
+if ($user_role === 'encargado' && $user_course_id) {
+    $classList = array_filter($classList, function($class) use ($user_course_id) {
+        return $class['id'] == $user_course_id;
+    });
+}
 ?>
 <!-- <pre>
     <?php print_r($studentList) ?>
@@ -27,7 +35,7 @@ $studentList = $actionClass->attendanceStudents($class_id, $class_date);
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                 <label for="class_id" class="form-label">Curso</label>
                                 <select name="class_id" id="class_id" class="form-select" required="required">
-                                    <option value="" disabled <?= empty($class_id) ? "selected" : "" ?>> -- Selecionar Curso -- </option>
+                                    <option value="" disabled <?= empty($class_id) ? "selected" : "" ?>> -- Seleccionar Curso -- </option>
                                     <?php if(!empty($classList) && is_array($classList)): ?>
                                     <?php foreach($classList as $row): ?>
                                         <option value="<?= $row['id'] ?>" <?= (isset($class_id) && $class_id == $row['id']) ? "selected" : "" ?>><?= $row['name'] ?></option>

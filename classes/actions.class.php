@@ -215,5 +215,10 @@ class Actions{
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+    public function list_class_by_id($course_id) {
+        $stmt = $this->conn->prepare("SELECT id, name FROM class_tbl WHERE id = ?");
+        $stmt->bind_param("i", $course_id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 }
-

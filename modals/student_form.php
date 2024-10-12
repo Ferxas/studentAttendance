@@ -2,11 +2,23 @@
 session_start();
 require_once(realpath(__DIR__.'/../classes/actions.class.php'));
 $actionClass = new Actions();
+
+// Obtener el rol y el curso del usuario
+$user_role = $_SESSION['user_role'];
+$user_course_id = $_SESSION['user_course_id'] ?? null;
+
 if(isset($_POST['id'])){
   $student = $actionClass->get_student($_POST['id']);
   extract($student);
 }
-$classList = $actionClass->list_class();
+
+// Obtener la lista de cursos
+$classList = [];
+if ($user_role === 'admin') {
+    $classList = $actionClass->list_class();
+} elseif ($user_role === 'encargado' && $user_course_id) {
+    $classList = $actionClass->list_class_by_id($user_course_id);
+}
 ?>
 <div class="container-fluid">
     <form id="student-form" method="POST">
