@@ -33,7 +33,7 @@ This project is a web-based application designed to manage student attendance re
    - Use a local server environment like XAMPP or WAMP to run the application.
 
 6. **Access the application**:
-   - Open your web browser and go to `http://localhost/student-report-attendance`.
+   - Open your web browser and go to `http://localhost/studentAttendance`.
 
 ## Usage
 
