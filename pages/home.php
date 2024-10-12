@@ -1,6 +1,6 @@
 <div class="page-title" id="inicio">Sistema de parte acádemico</div>
 <a class="nav-link <?= (isset($page)) && $page == 'home' ? 'active' : '' ?>" href="./">
-    <i class="fa-solid fa-house"></i>
+    <i class="fa-solid fa-house">Home</i>
 </a>
 <hr>
 <div class="container">
