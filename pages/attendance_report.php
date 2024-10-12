@@ -5,7 +5,7 @@
    </a> 
  </div>
 <hr>
-<?php 
+<?php
 // $studentList = $actionClass->list_student();
 $classList = $actionClass->list_class();
 $class_id = $_GET['class_id'] ?? "";

@@ -1,5 +1,5 @@
 <?php 
-session_start();
+require_once('auth.php');
 require_once('classes/actions.class.php');
 $actionClass = new Actions();
 $page = $_GET['page'] ?? "home";
