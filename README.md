@@ -15,12 +15,12 @@ This project is a web-based application designed to manage student attendance re
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/student-report-attendance.git
+   git clone https://github.com/Ferxas/studentAttendance   
    ```
 
 2. **Navigate to the project directory**:
    ```bash
-   cd student-report-attendance
+   cd studentAttendance
    ```
 
 3. **Set up the database**:
@@ -33,7 +33,7 @@ This project is a web-based application designed to manage student attendance re
    - Use a local server environment like XAMPP or WAMP to run the application.
 
 6. **Access the application**:
-   - Open your web browser and go to `http://localhost/student-report-attendance`.
+   - Open your web browser and go to `http://localhost/studentAttendance`.
 
 ## Usage
 
