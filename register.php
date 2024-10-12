@@ -29,6 +29,18 @@
                                 <label for="lastname">Apellido:</label>
                                 <input type="text" class="form-control" id="lastname" name="lastname" required>
                             </div>
+                            <div class="form-group mb-3">
+                                <label for="course">Curso:</label>
+                                <select class="form-control" id="course" name="course" required>
+                                    <?php
+                                    require_once('db-connect.php');
+                                    $courses = $conn->query("SELECT id, name FROM class_tbl");
+                                    while ($course = $courses->fetch_assoc()) {
+                                        echo "<option value='{$course['id']}'>{$course['name']}</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                             <button type="submit" name="register" class="btn btn-primary w-100">Registrar</button>
                         </form>
                     </div>
@@ -45,13 +57,12 @@ session_start();
 require_once('db-connect.php');
 
 if (isset($_POST['register'])) {
-    # code...
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $name = $_POST['name'];
     $lastname = $_POST['lastname'];
     $role = 'encargado';
-
+    $course_id = $_POST['course'];
 
     $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
@@ -61,8 +72,8 @@ if (isset($_POST['register'])) {
     if ($stmt->num_rows > 0) {
         echo 'El correo electrónico ya está registrado';
     } else {
-        $stmt = $conn->prepare("INSERT INTO users (email, password, name, lastname, role) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("sssss", $email, $password, $name, $lastname, $role);
+        $stmt = $conn->prepare("INSERT INTO users (email, password, name, lastname, role, course_id) VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("sssssi", $email, $password, $name, $lastname, $role, $course_id);
 
         if ($stmt->execute()) {
             echo 'Registro exitoso. Ahora puedes <a href="login.php">iniciar sesión</a>';
@@ -71,11 +82,8 @@ if (isset($_POST['register'])) {
         }
     }
 
-
     $stmt->close();
     $conn->close();
 }
-
-
 
 ?>

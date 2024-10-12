@@ -206,4 +206,14 @@ class Actions{
         if($this->conn)
         $this->conn->close(); 
     }
+    public function list_student_by_course($course_id) {
+        $stmt = $this->conn->prepare("SELECT s.id, s.name, c.name as class 
+           FROM students_tbl s
+           JOIN class_tbl c ON s.class_id = c.id
+           WHERE s.class_id = ?");
+        $stmt->bind_param("i", $course_id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 }
+
