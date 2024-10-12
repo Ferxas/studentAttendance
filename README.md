@@ -4,7 +4,7 @@
 
 ## TODO
 
-- [ ] login auth
+- [x] login auth
 - [ ] rols
 - [ ] dark mode button
 - [ ] reports considering monday-to-friday
