@@ -22,7 +22,8 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_role'] = $user['role'];
-            $_SESSION['user_name'] = $user['name']; 
+            $_SESSION['user_name'] = $user['name'];
+            $_SESSION['user_course_id'] = $user['course_id']; // check field
             header("Location: index.php");
             exit;
         } else {

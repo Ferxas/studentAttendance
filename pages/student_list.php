@@ -1,3 +1,20 @@
+<?php
+require_once(__DIR__ . '/../auth.php'); // Asegúrate de que la ruta es correcta
+
+// Obtener el rol y el curso del usuario
+$user_role = $_SESSION['user_role'];
+$user_course_id = $_SESSION['user_course_id'] ?? null;
+
+$studentList = [];
+if ($user_role === 'admin') {
+    $studentList = $actionClass->list_student();
+} elseif ($user_role === 'encargado' && $user_course_id) {
+    $studentList = $actionClass->list_student_by_course($user_course_id);
+}
+
+include_once("modals/delete.php");
+?>
+
 <div class="page-title mb-3">Lista de Estudiantes</div>
 <div style="width:3%;">
     <a class="nav-link <?= (isset($page)) && $page == 'home' ? 'active' : '' ?>" href="./">
@@ -5,25 +22,18 @@
     </a>
 </div>
 <hr>
-<?php 
-$studentList = $actionClass->list_student();
-include_once("modals/delete.php");
-
-?>
 <div class="row justify-content-center">
     <div class="col-lg-10 col-md-12 col-sm-12 col-12">
         <div class="card shadow">
             <div class="card-header rounded-0">
                 <div class="d-flex w-100 justify-content-end align-items-center">
-                      <input class="form-control" type="text" id="search_input" placeholder="Buscar estudiantes..." style="width:50%;margin-right:50%;">
-                    <!-- Agregar un nuevo estudiante --> 
+                    <input class="form-control" type="text" id="search_input" placeholder="Buscar estudiantes..." style="width:50%;margin-right:50%;">
                     <button class="btn btn-md rounded-1 btn-primary" type="button" id="add_student"><i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
             <div class="card-body rounded-0">
                 <div class="container-fluid">
                     <div class="table-responsive">
-                    <!-- <input type="text" id="search_input" placeholder="Buscar estudiante..." class="form-control mb-2"> -->
                         <table class="table table-hover table-hovered table-stripped">
                             <colgroup>
                                 <col width="10%">
@@ -44,13 +54,13 @@ include_once("modals/delete.php");
                                 <?php if(!empty($studentList) && is_array($studentList)): ?>
                                 <?php foreach($studentList as $row): ?>
                                     <tr>
-                                        <td class="text-center px-2 py-1"><?php  echo $i++;?></td>
+                                        <td class="text-center px-2 py-1"><?php echo $i++;?></td>
                                         <td class="px-2 py-1"><?= $row['class'] ?></td>
                                         <td class="px-2 py-1"><?= $row['name'] ?></td>
                                         <td class="text-center px-2 py-1">
                                             <div class="input-group input-group-sm justify-content-center">
                                                 <button class="btn btn-sm btn-warning rounded-1 edit_student" type="button" data-id="<?= $row['id'] ?>" title="Edit"><i class="fas fa-edit"></i></button>
-                                                &nbsp;&nbsp; <!-- Agregando espacio en blanco -->
+                                                &nbsp;&nbsp;
                                                 <button class="btn btn-sm btn-danger rounded-1 delete_student" type="button" data-id="<?= $row['id'] ?>" title="Delete"><i class="fa-solid fa-trash-can"></i></button>
                                             </div>
                                         </td>
@@ -85,9 +95,7 @@ include_once("modals/delete.php");
         $('.delete_student').click(function(e){
             e.preventDefault();
             let id = $(this).data('id') || '';
-            //se abre el modal
             $('#confirmDeleteModal').modal('show');
-            //cuando se hace click en el boto "SI" dentro del modal
             $('#confirmDeleteModal').find('.confirm-delete').click(function(){
                 start_loader();
                 $.ajax({
@@ -106,11 +114,9 @@ include_once("modals/delete.php");
                             end_loader();
                         }
                     }
-
                 });
             });
         });
-
     })
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -122,12 +128,11 @@ include_once("modals/delete.php");
             for (var i = 0; i < studentList.length; i++) {
                 var studentName = studentList[i].getElementsByTagName('td')[2].textContent.trim().toLowerCase();
                 if (studentName.includes(searchTerm)) {
-                    studentList[i].style.display = 'table-row'; // Mostrar la fila
+                    studentList[i].style.display = 'table-row';
                 } else {
-                    studentList[i].style.display = 'none'; // Ocultar la fila
+                    studentList[i].style.display = 'none';
                 }
             }
         });
     });
-
 </script>
