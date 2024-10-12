@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/login_register_style.css">
-    <title>Register</title>
-</head>
+<?php require_once('./inc/header.php') ?>
 
 <body>
-    <div class="register-container">
-        <form action="register.php" method="POST">
-            <h2>Registro</h2>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header text-center">
+                        <h2>Registro</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="register.php" method="POST">
+                            <div class="form-group mb-3">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password">Contraseña:</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="name">Nombre:</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="lastname">Apellido:</label>
+                                <input type="text" class="form-control" id="lastname" name="lastname" required>
+                            </div>
+                            <button type="submit" name="register" class="btn btn-primary w-100">Registrar</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div>
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div>
-                <label for="lastname">Apellido:</label>
-                <input type="text" id="lastname" name="lastname" required>
-            </div>
-            <button type="submit" name="register">Registrar</button>
-        </form>
+        </div>
     </div>
 </body>
 </html>

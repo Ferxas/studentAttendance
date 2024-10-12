@@ -36,29 +36,35 @@ if (isset($_POST['login'])) {
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="assets/css/login_register_style.css">
-</head>
+
+<?php require_once('inc/header.php') ?>
 <body>
-    <div class="login-container">
-        <form action="login.php" method="POST">
-            <h2>Iniciar Sesión</h2>
-            <?php if (isset($error)): ?>
-                <div class="error-message"><?= $error ?></div>
-            <?php endif; ?>
-            <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" name="email" id="email" required>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header text-center">
+                        <h2>Iniciar Sesión</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="login.php" method="POST">
+                            <?php if (isset($error)): ?>
+                                <div class="alert alert-danger"><?= $error ?></div>
+                            <?php endif; ?>
+                            <div class="form-group mb-3">
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" class="form-control" name="email" id="email" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password">Contraseña</label>
+                                <input type="password" class="form-control" name="password" id="password" required>
+                            </div>
+                            <button type="submit" name="login" class="btn btn-primary w-100">Iniciar Sesión</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-            <button type="submit" name="login">Iniciar Sesión</button>
-        </form>
+        </div>
     </div>
 </body>
 </html>
