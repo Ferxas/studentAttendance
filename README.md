@@ -46,6 +46,6 @@ This project is a web-based application designed to manage student attendance re
 ## TODO
 
 - [x] Login authentication
-- [ ] Implement user roles
+- [x] Implement user roles
 - [ ] Add a dark mode toggle
 - [ ] Generate reports considering Monday-to-Friday
