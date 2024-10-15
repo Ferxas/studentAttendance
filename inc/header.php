@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,5 +20,31 @@
     <!-- Bootstrap CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
 </head>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('toggle-theme').addEventListener('click', function() {
+            const body = document.body;
+            const navbar = document.getElementById('navbar');
+
+            // Alternar clases de Bootstrap
+            body.classList.toggle('bg-dark');
+            body.classList.toggle('text-white');
+            navbar.classList.toggle('navbar-light');
+            navbar.classList.toggle('navbar-dark');
+
+            // Guardar la preferencia del tema
+            const isDarkMode = body.classList.contains('bg-dark');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        });
+
+        // Cargar el tema guardado al cargar la página
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+            document.body.classList.add('bg-dark', 'text-white');
+            document.getElementById('navbar').classList.add('navbar-dark');
+            document.getElementById('navbar').classList.remove('navbar-light');
+        }
+    });
+</script>
+
