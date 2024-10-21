@@ -87,7 +87,7 @@
         // Cargar el modelo GLB
         const loader = new THREE.GLTFLoader();
         loader.load(
-            './models/Tigerweb.glb', // Cambia esto a la ruta de tu archivo .glb
+            './models/Tigerweb.glb', // ruta del archivo
             function (gltf) {
                 const model = gltf.scene;
                 scene.add(model);
