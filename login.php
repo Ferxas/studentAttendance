@@ -12,6 +12,7 @@ if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // Consulta para obtener todos los campos necesarios, incluido el avatar
     $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -19,11 +20,19 @@ if (isset($_POST['login'])) {
 
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
+
+        // Verificar la contraseña
         if (password_verify($password, $user['password'])) {
+            // Almacenar los datos del usuario en la sesión
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_role'] = $user['role'];
             $_SESSION['user_name'] = $user['name'];
-            $_SESSION['user_course_id'] = $user['course_id']; // check field
+            $_SESSION['user_course_id'] = $user['course_id']; 
+
+            // Comprobar si el usuario tiene un avatar personalizado, si no, asignar uno por defecto
+            $_SESSION['user_avatar'] = !empty($user['avatar']) ? $user['avatar'] : './assets/img/default_avatar.png';
+
+            // Redirigir a la página principal
             header("Location: index.php");
             exit;
         } else {
@@ -68,4 +77,3 @@ if (isset($_POST['login'])) {
         </div>
     </div>
 </body>
-</html>

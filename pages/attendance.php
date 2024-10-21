@@ -1,4 +1,4 @@
-<div class="page-title mb-3">Registro de Asistencia</div>
+<div class="page-title mb-3 text-dark">Registro de Asistencia</div>
 <div style="width:3%;">
   <a class="nav-link <?= (isset($page)) && $page == 'home' ? 'active' : '' ?>" href="./">
     <i class="fa-solid fa-house"></i>

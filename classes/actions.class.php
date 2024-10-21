@@ -221,4 +221,15 @@ class Actions{
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+    public function get_user_data($user_id) {
+        $stmt = $this->conn->prepare("SELECT id, name, lastname, role, avatar, course_id FROM users WHERE id = ?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
+    }
+    public function update_user_avatar($user_id, $avatar_path) {
+        $stmt = $this->conn->prepare("UPDATE users SET avatar = ? WHERE id = ?");
+        $stmt->bind_param("si", $avatar_path, $user_id);
+        return $stmt->execute();
+    }
 }

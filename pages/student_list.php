@@ -15,7 +15,7 @@ if ($user_role === 'admin') {
 include_once("modals/delete.php");
 ?>
 
-<div class="page-title mb-3">Lista de Estudiantes</div>
+<div class="page-title mb-3 text-dark">Lista de Estudiantes</div>
 <div style="width:3%;">
     <a class="nav-link <?= (isset($page)) && $page == 'home' ? 'active' : '' ?>" href="./">
         <i class="fa-solid fa-house"></i>

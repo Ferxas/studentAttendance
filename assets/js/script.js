@@ -25,7 +25,7 @@ function open_modal($modalURL="", $modalTitle="", $data = {}, $size = "modal-md"
         return false;
         $(uniModal).find('.modal-dialog').removeClass('modal-sm')
         $(uniModal).find('.modal-dialog').removeClass('modal-md')
-        $(uniModal).find('.modal-dialog').removeClass('modal-lg')
+        $(uniModal).find('.modal-dialog').removeClass('modal-lg ')
         $(uniModal).find('.modal-dialog').removeClass('modal-xl')
         if($size != "")
         $(uniModal).find('.modal-dialog').addClass($size)

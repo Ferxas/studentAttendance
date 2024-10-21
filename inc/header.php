@@ -19,19 +19,23 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- TAILWIND CSS -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
 
 </head>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('toggle-theme').addEventListener('click', function() {
-            const body = document.body;
-            const navbar = document.getElementById('navbar');
+        const toggleThemeButton = document.getElementById('toggle-theme');
+        const body = document.body;
+        const navbar = document.getElementById('navbar');
 
+        toggleThemeButton.addEventListener('click', function() {
             // Alternar clases de Bootstrap
-            body.classList.toggle('bg-dark');
-            body.classList.toggle('text-white');
-            navbar.classList.toggle('navbar-light');
-            navbar.classList.toggle('navbar-dark');
+            body.classList.toggle('bg-dark'); // Cambia el fondo a oscuro
+            body.classList.toggle('text-dark'); // Cambia el texto a blanco
+            navbar.classList.toggle('navbar-dark'); // Cambia la barra de navegación a oscuro
+            navbar.classList.toggle('navbar-light'); // Cambia la barra de navegación a claro
 
             // Guardar la preferencia del tema
             const isDarkMode = body.classList.contains('bg-dark');
@@ -41,10 +45,9 @@
         // Cargar el tema guardado al cargar la página
         const theme = localStorage.getItem('theme');
         if (theme === 'dark') {
-            document.body.classList.add('bg-dark', 'text-white');
-            document.getElementById('navbar').classList.add('navbar-dark');
-            document.getElementById('navbar').classList.remove('navbar-light');
+            body.classList.add('bg-dark', 'text-dark');
+            navbar.classList.add('navbar-dark');
+            navbar.classList.remove('navbar-light');
         }
     });
 </script>
-

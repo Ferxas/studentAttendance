@@ -1,9 +1,9 @@
-<div class="page-title mb-3">Reporte de Asistencia</div>
- <div style="width:3%;">
-   <a class="nav-link <?= (isset($page)) && $page == 'home' ? 'active' : '' ?>" href="./">
-     <i class="fa-solid fa-house"></i>
-   </a> 
- </div>
+<div class="page-title mb-3 text-dark">Reporte de Asistencia</div>
+<div style="width:3%;">
+    <a class="nav-link <?= (isset($page)) && $page == 'home' ? 'active' : '' ?>" href="./">
+        <i class="fa-solid fa-house"></i>
+    </a>
+</div>
 <hr>
 <?php
 // $studentList = $actionClass->list_student();
@@ -160,3 +160,4 @@ if(!empty($class_month)){
         })
     })
 </script>
+

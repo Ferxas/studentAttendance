@@ -146,4 +146,34 @@ tbody #attendance-rpt-tbl td:first-child {
     margin: 10px,10px,10px,10px;
 } */
 
+/* dark mode styles */
+body.bg-dark {
+    background-color: #343a40 !important; /* Color de fondo oscuro */
+    color: #ffffff; /* Color de texto blanco */
+}
 
+.navbar-dark {
+    background-color: #212529 !important; /* Color de fondo de la barra de navegación en modo oscuro */
+}
+
+.flashdata {
+    background: #444; /* Fondo de las notificaciones en modo oscuro */
+    border: 1px solid #666; /* Borde de las notificaciones en modo oscuro */
+}
+
+div.page-title,
+div.page-title * {
+    color: #ffffff; /* Color del texto en el título en modo oscuro */
+}
+
+/* Estilos para el modo oscuro */
+body.bg-dark {
+    background-color: #343a40 !important; /* Color de fondo oscuro */
+    color: #ffffff; /* Color de texto blanco */
+}
+
+.navbar-dark {
+    background-color: #212529 !important; /* Color de fondo de la barra de navegación en modo oscuro */
+}
+
+/* Otros estilos para el modo oscuro */

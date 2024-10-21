@@ -1,6 +1,12 @@
 <?php
 require_once('auth.php');
 require_once('classes/actions.class.php');
+// para desarrollo, usar estas 2 funciones en caso de que el header falle o no se muestre
+
+// session_unset(); // delete all variables of session 
+// session_destroy();
+
+
 $actionClass = new Actions();
 $page = $_GET['page'] ?? "home";
 $page_title = ucwords(str_replace("_", " ", $page));
