@@ -79,8 +79,6 @@ if (isset($_POST['login'])) {
                             <div class="pt-1 mb-4">
                                 <button class="btn btn-info btn-lg btn-block" type="submit" name="login">Iniciar Sesión</button>
                             </div>
-                            <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">¿Olvidaste tu contraseña?</a></p>
-                            <p>¿No tienes una cuenta? <a href="#!" class="link-info">Regístrate aquí</a></p>
                         </form>
                     </div>
                 </div>

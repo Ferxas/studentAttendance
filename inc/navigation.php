@@ -87,14 +87,6 @@ echo '</pre>';  */
 ?>
 
 <style>
-    body.dark-mode {
-        background-color: #121212;
-        color: #ffffff;
-    }
-
-    .navbar.dark-mode {
-        background-color: #1f1f1f;
-    }
 
 </style>
 

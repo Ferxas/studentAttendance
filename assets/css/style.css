@@ -146,34 +146,41 @@ tbody #attendance-rpt-tbl td:first-child {
     margin: 10px,10px,10px,10px;
 } */
 
-/* dark mode styles */
-body.bg-dark {
-    background-color: #343a40 !important; /* Color de fondo oscuro */
-    color: #ffffff; /* Color de texto blanco */
+
+/* Estilos para modo claro (default) */
+body {
+    background-color: #ffffff;
+    color: #212529;
+    transition: all 0.3s ease;
 }
 
-.navbar-dark {
-    background-color: #212529 !important; /* Color de fondo de la barra de navegación en modo oscuro */
+/* Estilos para modo oscuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
 }
 
-.flashdata {
-    background: #444; /* Fondo de las notificaciones en modo oscuro */
-    border: 1px solid #666; /* Borde de las notificaciones en modo oscuro */
+/* Estilos para la navbar en modo oscuro */
+.navbar.dark-mode {
+    background-color: #1f1f1f;
 }
 
-div.page-title,
-div.page-title * {
-    color: #ffffff; /* Color del texto en el título en modo oscuro */
+/* Ajustes adicionales para elementos en modo oscuro */
+.dark-mode .card {
+    background-color: #1f1f1f;
+    border-color: #333;
 }
 
-/* Estilos para el modo oscuro */
-body.bg-dark {
-    background-color: #343a40 !important; /* Color de fondo oscuro */
-    color: #ffffff; /* Color de texto blanco */
+.dark-mode .table {
+    color: #ffffff;
 }
 
-.navbar-dark {
-    background-color: #212529 !important; /* Color de fondo de la barra de navegación en modo oscuro */
+.dark-mode .modal-content {
+    background-color: #1f1f1f;
+    color: #ffffff;
 }
 
-/* Otros estilos para el modo oscuro */
+/* Añade una transición suave para todos los cambios */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

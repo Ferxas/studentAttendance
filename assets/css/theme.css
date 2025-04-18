@@ -1,0 +1,44 @@
+/* Modo claro (default) */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --nav-bg: #f8f9fa;
+}
+
+/* Modo oscuro */
+[data-bs-theme="dark"] {
+    /* --bg-color: #121212; */
+
+    --text-color: #ffffff;
+    --nav-bg: #1f1f1f;
+}
+
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    transition: all 0.3s ease;
+}
+
+.navbar {
+    background-color: var(--nav-bg) !important;
+}
+
+/* Ajustes para componentes en modo oscuro */
+[data-bs-theme="dark"] .card {
+    /* background-color: #1f1f1f !important; */
+    border-color: #333;
+}
+
+[data-bs-theme="dark"] .table {
+    color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .container-md {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Transiciones suaves */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

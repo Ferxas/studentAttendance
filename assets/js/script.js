@@ -32,7 +32,7 @@ function open_modal($modalURL="", $modalTitle="", $data = {}, $size = "modal-md"
 
         $(uniModal).find('#uniModalLabel').html($modalTitle)
 
-        $(uniModal).find('.modal-body').html(`<div class="container-fluid"><div class="text-center text-dark-emphasis"><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div></div></div>`)
+        $(uniModal).find('.modal-body').html(`<div class="container-fluid"><div class="text-center text-dark-emphasis"><div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Cargando...</span></div></div></div>`)
         $(uniModal).find('.modal-footer button[type="submit"]').hide()
         $(uniModal).modal('show')
         $.ajax({
@@ -41,7 +41,7 @@ function open_modal($modalURL="", $modalTitle="", $data = {}, $size = "modal-md"
             data: $data,
             error: (err) => {
                 console.error(err)
-                alert("An error occurred while fetching the modal content! Kindly reload this page.")
+                alert("¡Se produjo un error al obtener el contenido! Por favor, recarga esta página.")
             },
             success:function(resp){
                 $(uniModal).find('.modal-body').html(resp) 

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
 
     <!-- Fontawesome CSS CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -26,28 +27,31 @@
 </head>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const toggleThemeButton = document.getElementById('toggle-theme');
-        const body = document.body;
-        const navbar = document.getElementById('navbar');
+    const toggleThemeButton = document.getElementById('toggle-theme');
+    const html = document.documentElement;
+    const navbar = document.getElementById('navbar');
 
-        toggleThemeButton.addEventListener('click', function() {
-            // Alternar clases de Bootstrap
-            body.classList.toggle('bg-dark'); // Cambia el fondo a oscuro
-            body.classList.toggle('text-dark'); // Cambia el texto a blanco
-            navbar.classList.toggle('navbar-dark'); // Cambia la barra de navegación a oscuro
-            navbar.classList.toggle('navbar-light'); // Cambia la barra de navegación a claro
-
-            // Guardar la preferencia del tema
-            const isDarkMode = body.classList.contains('bg-dark');
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        });
-
-        // Cargar el tema guardado al cargar la página
-        const theme = localStorage.getItem('theme');
-        if (theme === 'dark') {
-            body.classList.add('bg-dark', 'text-dark');
-            navbar.classList.add('navbar-dark');
+    function setTheme(isDark) {
+        if (isDark) {
+            html.setAttribute('data-bs-theme', 'dark');
             navbar.classList.remove('navbar-light');
+            navbar.classList.add('navbar-dark');
+        } else {
+            html.setAttribute('data-bs-theme', 'light');
+            navbar.classList.remove('navbar-dark');
+            navbar.classList.add('navbar-light');
         }
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // Manejar el clic en el botón de tema
+    toggleThemeButton.addEventListener('click', function() {
+        const isDark = html.getAttribute('data-bs-theme') !== 'dark';
+        setTheme(isDark);
     });
+
+    // Cargar tema guardado
+    const savedTheme = localStorage.getItem('theme') === 'dark';
+    setTheme(savedTheme);
+});
 </script>
